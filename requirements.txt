@@ -1,0 +1,8 @@
+scipy==1.4.1
+umap_learn==0.4.6
+~umpy==1.16.4
+hdbscan==0.8.26
+pandas==1.0.3
+numpy==1.19.4
+scikit_learn==0.23.2
+umap==0.1.1
