@@ -48,9 +48,18 @@ class test_embeddings(unittest.TestCase):
         embed = self._get_module('embeddings')
         clustering =  self._get_module('clustering')
         embeddings = embed.pretrained_transformer_embeddings(TEST_UTTERANCES*10)
-        n_dimensions = 3
+        n_dimensions = 2
         reduced = clustering.reduce_dimensions_umap(embeddings, n_dimensions, n_neighbors=2)
         self.assertEqual(len(reduced[0]), n_dimensions)
     
+    def test_get_optimal_n_components(self):
+        embed = self._get_module('embeddings')
+        clustering =  self._get_module('clustering')
+        embeddings = embed.pretrained_transformer_embeddings(TEST_UTTERANCES*10)
+        n_dimensions = clustering.get_optimal_n_components(embeddings)
+        self.assertEqual(n_dimensions, 2)
+
+
+
 if __name__ == '__main__':
     unittest.main()
