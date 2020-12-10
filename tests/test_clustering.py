@@ -35,12 +35,12 @@ class test_embeddings(unittest.TestCase):
     def test_import_embeddings_module(self):
         """Tests that you can import the embeddings module."""
         embed = self._get_module('embeddings')
-        self.assertIsNotNone(embed)
+        self.assertIsNotNone(embed, "Could not import embeddings module.")
 
     def test_import_clustering_module(self):
         """Tests that you can import the clustering module."""
-        embed = self._get_module('clustering')
-        self.assertIsNotNone(embed)
+        clustering = self._get_module('clustering')
+        self.assertIsNotNone(clustering, "Could not import clustering module.")
 
     def test_reduce_dimensions_pca_num_dimensions(self):
         """Tests the size of the vector after dimension reduction using PCA."""
@@ -55,7 +55,7 @@ class test_embeddings(unittest.TestCase):
         reduced = self._get_reduced_embeddings()
         sim_1 = self._cosine_similarity(reduced[0], reduced[1])
         sim_2 = self._cosine_similarity(reduced[0], reduced[2])
-        self.assertGreater(sim_1, sim_2)
+        self.assertGreater(sim_1, sim_2, "The similarity between 1 and 2 should be more than 1 and 3.")
 
     def test_reduce_dimensions_umap(self):
         """Tests the size of the vector after dimension reduction using UMAP."""
