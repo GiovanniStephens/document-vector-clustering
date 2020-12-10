@@ -34,6 +34,8 @@ pip install -r requirements.txt
 ```
 
 # Other Functionality
+
+## Finding the optimal number of principal components to keep
 When reducing the number of dimensions in the document/sentence vectors, there is not a lot of guidance with regards to how many principal components to keep. Ideally, you would be able to choose a number where you keep all the components that explain a 'significant' amount of variation.  
 
 So I have used [this method](https://towardsdatascience.com/how-to-tune-hyperparameters-of-tsne-7c0596a18868) to determine how many components to keep. Basically, you shuffle the data by columns to remove any correlations in the data. You then run a PCA on the shuffled data to get an average amount of variation explained by the principal components. The variation explained becomes a 'noise' baseline. With several shuffles of the data, you can get a [spread](https://en.wikipedia.org/wiki/Statistical_dispersion) of the 'noise'. When running the PCA on the original data, you can perform a [t-test](https://en.wikipedia.org/wiki/Student%27s_t-test) to determine what principal components explain a statistically significant variation in the data. 
